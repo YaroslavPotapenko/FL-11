@@ -1,0 +1,383 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  background-color: #0b192f;
+  font-weight: lighter;
+  font-family: roboto;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+      "header header header"
+      "main main aside"
+      "footer footer footer";
+  grid-template-rows: 60px 1fr 100px;
+  grid-template-columns: 40% 40% 1fr;
+  grid-gap: 10px;
+}
+
+header {
+  grid-area: header;
+  background-color: #162b4d;;
+  color: #fff;
+  display: grid;
+  grid-template-areas:
+      "logo logo header-nav";
+}
+
+.logo {
+  grid-area: logo;
+  padding: 10px;
+  font-size: 30px;
+}
+
+.logo :last-child {
+  color: red;
+}
+
+.header-nav {
+  grid-area: header-nav;
+  text-align: right;
+  margin-right: 50px;
+}
+
+.header-nav a {
+  display: inline-block;
+  padding: 20px;
+  color: #fff;
+}
+
+.header-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+main {
+  grid-area: main;
+  color: #fff;
+}
+
+.date {
+  position: absolute;
+  text-align: center;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+main .posts:nth-child(odd) {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+      "post-img post-description";
+  grid-template-rows: 1fr;
+  grid-template-columns: 50% 50%;
+}
+
+main .posts:nth-child(odd) .post-description .date {
+  right: 20px;
+  top: 30px;
+}
+
+main .posts:nth-child(odd) .post-description {
+  padding-right: 120px;
+}
+
+main .posts:nth-child(even) {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+      "post-description post-img";
+  grid-template-rows: 1fr;
+  grid-template-columns: 50% 50%;
+  text-align: right;
+}
+
+main .posts:nth-child(even) .post-description .date {
+  left: 20px;
+  top: 30px;
+}
+
+main .posts:nth-child(even) .post-description {
+  padding-left: 120px;
+}
+
+.post-5 {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+      "post-description post-description";
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.post-5 .post-description .date {
+  top: 30px;
+  right: 20px;
+}
+
+.post-5 .post-description {
+  padding-right: 120px;
+}
+
+.post-img {
+  display: flex;
+  flex-direction: row;
+  grid-area: post-img;
+}
+
+.post-img img {
+  width: 100%;
+}
+
+.post-description {
+  grid-area: post-description;
+  font-size: 30px;
+  padding: 50px;
+}
+
+.post-description p {
+  padding-top: 20px;
+}
+
+.post-1 {
+  grid-area: post1;
+  background: #B71757;
+}
+
+.posts:hover .post-img img{
+  opacity: 0.5;
+}
+
+.post-2 {
+  grid-area: post2;
+  background: #0D7E71;
+}
+
+.post-3 {
+  grid-area: post3;
+  background: #b1660e;
+}
+
+.post-4 {
+  grid-area: post4;
+  background: #d12767;
+}
+
+.post-5 {
+  grid-area: post5;
+  background: #2d95bb;
+}
+
+aside {
+  grid-area: aside;
+}
+
+.news {
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.news img {
+  width: 100%;
+}
+
+.news-description {
+  padding: 20px;
+}
+
+.news-description p {
+  padding-top: 10px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #162b4d;
+  color: #b8b8b8;
+  display: grid;
+  grid-template-areas:
+      "copyright signature";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.copyright {
+  grid-area: copyright;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.signature {
+  grid-area: signature;
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+@media screen and (max-width: 1400px) {
+  .wrapper {
+    width: 95%;
+    margin: 0 auto;
+    grid-template-areas:
+      "header header header"
+      "main main aside"
+      "footer footer footer";
+    grid-template-rows: 60px 1fr 100px;
+    grid-template-columns: 50% 1fr 30%;
+    grid-gap: 10px;
+  }
+  .post-description {
+    font-size: 20px;
+  }
+  .date {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    max-width: 768px;
+    grid-template-areas:
+      "header header header"
+      "main main aside"
+      "footer footer footer";
+    grid-template-rows: 200px 1fr 100px;
+    grid-template-columns: 40% 1fr 40%;
+    grid-gap: 10px;
+  }
+
+  header {
+    grid-template-areas:
+        "brg brg brg"
+        "logo logo logo";
+    grid-template-columns: 250px 1fr 100px;
+    grid-template-columns: 20% 1fr 20%;
+  }
+
+  .burger-menu {
+    grid-area: brg;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    transition: all 0.2s ease;
+  }
+
+  .burger-menu ul li{
+    list-style-type: none;
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    margin: 2px 2px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .logo {
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .post-description {
+    font-size: 15px;
+  }
+  .date {
+    font-size: 35px;
+  }
+
+  main .posts:nth-child(even) .post-description {
+    padding: 30px 50px;
+    text-align: left;
+  }
+  main .posts:nth-child(odd) .post-description {
+    padding: 30px 50px;
+  }
+
+  .date {
+    position: relative;
+  }
+
+  main .posts:nth-child(odd) {
+    position: relative;
+    display: grid;
+    grid-template-areas:
+        "post-img post-img"
+        "post-description post-description";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 50% 50%;
+  }
+
+  main .posts:nth-child(odd) .post-description .date, main .posts:nth-child(even) .post-description .date {
+    right: 0;
+    bottom: 0;
+  }
+
+  .post-5 .post-description {
+    padding: 30px 50px;
+  }
+
+  .post-5 .post-description .date {
+    top: 0;
+    right: 0;
+  }
+
+  main .posts:nth-child(even) {
+    position: relative;
+    display: grid;
+    grid-template-areas:
+        "post-img post-img"
+        "post-description post-description";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 50% 50%;
+    text-align: right;
+  }
+
+  footer {
+    grid-template-areas:
+        "copyright copyright"
+        "signature signature";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .copyright {
+    grid-area: copyright;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .signature {
+    grid-area: signature;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    max-width: 480px;
+    grid-template-areas:
+      "header header header"
+      "main main main"
+      "aside aside aside"
+      "footer footer footer";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+}
